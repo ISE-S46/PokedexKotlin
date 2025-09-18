@@ -13,3 +13,13 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+AndroidProjectSystem.xml
+compiler.xml
+deploymentTargetSelector.xml
+.kotlin/errors
+gradle.xml
+migrations.xml
+misc.xml
+runConfigurations.xml
+vcs.xml
