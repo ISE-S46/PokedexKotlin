@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">PokedexAndroid</string>
+    <string name="enter_search">Enter Pokemon Name</string>
+    <string name="Search">Search</string>
+    <string name="TotalStats">Total Stats</string>
+    <string name="HP">HP</string>
+    <string name="ATK">ATK</string>
+    <string name="DEF">DEF</string>
+    <string name="SpA">Sp. ATK</string>
+    <string name="SpD">Sp. DEF</string>
+    <string name="Speed">Speed</string>
+    <string name="gen">Generation</string>
+    <string name="legend">Legendary</string>
+    <string name="welcome">Welcome To Pokedex</string>
+    <string name="hint">Try typing pikachu in the search bar</string>
+    <string name="missing">Pokemon not found</string>
+    <string name="Total">Total Stats: %d</string>
 </resources>

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pokemonType1Display: TextView
     private lateinit var pokemonType2Display: TextView
     private lateinit var typeBadgesContainer: LinearLayout
-    private lateinit var TotalStats: TextView
+    private lateinit var totalStats: TextView
     private lateinit var pokemonStatsContainer: LinearLayout
     private lateinit var hpStatDisplay: TextView
     private lateinit var attackStatDisplay: TextView
@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var spAtkStatDisplay: TextView
     private lateinit var spDefStatDisplay: TextView
     private lateinit var speedStatDisplay: TextView
-    private lateinit var GenerationDisplay: TextView
-    private lateinit var LegendaryDisplay: TextView
+    private lateinit var generationDisplay: TextView
+    private lateinit var legendaryDisplay: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         pokemonType1Display = findViewById(R.id.pokemonType1Display)
         pokemonType2Display = findViewById(R.id.pokemonType2Display)
         typeBadgesContainer = findViewById(R.id.typeBadgesContainer)
-        TotalStats = findViewById(R.id.TotalStats)
+        totalStats = findViewById(R.id.TotalStats)
         pokemonStatsContainer = findViewById(R.id.pokemonStatsContainer)
         hpStatDisplay = findViewById(R.id.hpStatDisplay)
         attackStatDisplay = findViewById(R.id.attackStatDisplay)
@@ -64,8 +64,8 @@ class MainActivity : AppCompatActivity() {
         spAtkStatDisplay = findViewById(R.id.spAtkStatDisplay)
         spDefStatDisplay = findViewById(R.id.spDefStatDisplay)
         speedStatDisplay = findViewById(R.id.speedStatDisplay)
-        GenerationDisplay = findViewById(R.id.GenerationDisplay)
-        LegendaryDisplay = findViewById(R.id.LegendaryDisplay)
+        generationDisplay = findViewById(R.id.GenerationDisplay)
+        legendaryDisplay = findViewById(R.id.LegendaryDisplay)
 
         searchButton.setOnClickListener {
             performSearch()
@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity() {
 
         pokemonNameInput.setOnEditorActionListener { textView, actionId, keyEvent ->
             if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH || keyEvent?.keyCode == android.view.KeyEvent.KEYCODE_ENTER) {
-                // Trigger the search logic
                 performSearch()
                 // Return true to indicate that the event has been handled
                 true
@@ -83,6 +82,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         hidePokemonDisplayElements()
+
+        pokemonNameDisplay.text = getString(R.string.welcome)
+        pokemonNameDisplay.visibility = View.VISIBLE
+
+        totalStats.text = getString(R.string.hint)
+        totalStats.visibility = View.VISIBLE
     }
 
     private fun performSearch() {
@@ -93,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             displayPokemonInfo(foundPokemon)
             showPokemonDisplayElements()
         } else {
-            pokemonNameDisplay.text = "Pokemon not found."
+            pokemonNameDisplay.text = getString(R.string.missing)
             pokemonNameDisplay.visibility = View.VISIBLE // Show general error message
             pokemonImageView.setImageResource(R.drawable.pokeball)
             hidePokemonDisplayElements() // Hide specific details
@@ -107,7 +112,7 @@ class MainActivity : AppCompatActivity() {
     private fun hidePokemonDisplayElements() {
         pokemonType1Display.visibility = View.INVISIBLE
         pokemonType2Display.visibility = View.INVISIBLE
-        TotalStats.visibility = View.INVISIBLE
+        totalStats.visibility = View.INVISIBLE
         pokemonStatsContainer.visibility = View.INVISIBLE
     }
 
@@ -115,7 +120,7 @@ class MainActivity : AppCompatActivity() {
         pokemonNameDisplay.visibility = View.VISIBLE
         pokemonType1Display.visibility = View.VISIBLE
         typeBadgesContainer.visibility = View.VISIBLE
-        TotalStats.visibility = View.VISIBLE
+        totalStats.visibility = View.VISIBLE
         pokemonStatsContainer.visibility = View.VISIBLE
     }
 
@@ -185,28 +190,52 @@ class MainActivity : AppCompatActivity() {
 
         // Set Type 1
         pokemonType1Display.text = pokemon.type1
-        // Example: if (pokemon.type1 == "Fire") pokemonType1Display.setBackgroundResource(R.drawable.rounded_type_badge_red)
+        pokemonType1Display.setBackgroundResource(getTypeBadgeResource(pokemon.type1))
 
         // Set Type 2 (if exists)
         if (pokemon.type2.isNotEmpty() && pokemon.type2 != "None") { // "None" is in your CSV
             pokemonType2Display.text = pokemon.type2.lowercase()
+            pokemonType2Display.setBackgroundResource(getTypeBadgeResource(pokemon.type2))
             pokemonType2Display.visibility = View.VISIBLE
-            // Example: if (pokemon.type2 == "Flying") pokemonType2Display.setBackgroundResource(R.drawable.rounded_type_badge_blue)
         } else {
             pokemonType2Display.visibility = View.GONE
         }
 
         // Set Stats
-        TotalStats.text = "Total Stats: " + pokemon.total.toString()
+        totalStats.text = getString(R.string.Total, pokemon.total)
         hpStatDisplay.text = pokemon.hp.toString()
         attackStatDisplay.text = pokemon.attack.toString()
         defenseStatDisplay.text = pokemon.defense.toString()
         spAtkStatDisplay.text = pokemon.spAtk.toString()
         spDefStatDisplay.text = pokemon.spDef.toString()
         speedStatDisplay.text = pokemon.speed.toString()
-        GenerationDisplay.text = pokemon.generation.toString()
-        LegendaryDisplay.text = if (pokemon.isLegendary) "Yes" else "No"
+        generationDisplay.text = pokemon.generation.toString()
+        legendaryDisplay.text = if (pokemon.isLegendary) "Yes" else "No"
 
+    }
+
+    private fun getTypeBadgeResource(type: String): Int {
+        return when (type.lowercase()) {
+            "grass" -> R.drawable.rounded_type_badge_grass
+            "fire" -> R.drawable.rounded_type_badge_fire
+            "water" -> R.drawable.rounded_type_badge_water
+            "bug" -> R.drawable.rounded_type_badge_bug
+            "normal" -> R.drawable.rounded_type_badge_normal
+            "poison" -> R.drawable.rounded_type_badge_poison
+            "electric" -> R.drawable.rounded_type_badge_electric
+            "ground" -> R.drawable.rounded_type_badge_ground
+            "fairy" -> R.drawable.rounded_type_badge_fairy
+            "fighting" -> R.drawable.rounded_type_badge_fighting
+            "psychic" -> R.drawable.rounded_type_badge_psychic
+            "rock" -> R.drawable.rounded_type_badge_rock
+            "ghost" -> R.drawable.rounded_type_badge_ghost
+            "ice" -> R.drawable.rounded_type_badge_ice
+            "dragon" -> R.drawable.rounded_type_badge_dragon
+            "dark" -> R.drawable.rounded_type_badge_dark
+            "steel" -> R.drawable.rounded_type_badge_steel
+            "flying" -> R.drawable.rounded_type_badge_flying
+            else -> R.drawable.rounded_type_badge_water
+        }
     }
 
 }

@@ -29,9 +29,9 @@
             <EditText
                 android:id="@+id/pokemonNameInput"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
-                android:hint="Enter Pokemon Name"
+                android:hint="@string/enter_search"
                 android:inputType="textCapWords"
                 android:textColorHint="#CCCCCC"
                 android:textColor="#FFFFFF"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Search"
+                android:text="@string/Search"
                 android:backgroundTint="#FFFFFF"
                 android:textColor="#000000" />
 
@@ -108,7 +108,7 @@
                         android:id="@+id/pokemonType1Display"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_type_badge_blue"
+                        android:background="@drawable/rounded_type_badge_water"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:paddingTop="8dp"
@@ -123,7 +123,7 @@
                         android:id="@+id/pokemonType2Display"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_type_badge_red"
+                        android:background="@drawable/rounded_type_badge_fire"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:paddingTop="8dp"
@@ -141,7 +141,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Total Stats"
+                    android:textAlignment="center"
+                    android:text="@string/TotalStats"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -167,7 +168,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="HP"
+                            android:text="@string/HP"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -191,7 +192,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ATK"
+                            android:text="@string/ATK"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -215,7 +216,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="DEF"
+                            android:text="@string/DEF"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -239,7 +240,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sp. ATK"
+                            android:text="@string/SpA"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -263,7 +264,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sp. DEF"
+                            android:text="@string/SpD"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -287,7 +288,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SPD"
+                            android:text="@string/Speed"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -312,7 +313,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Generation"
+                            android:text="@string/Speed"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
@@ -336,7 +337,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Legendary"
+                            android:text="@string/legend"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
